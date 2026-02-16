@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIT Bot - Chatbot Component</title>
+  <link rel="stylesheet" href="../css/chatbot.css">
+</head>
+
+<body>
+  <button class="chat-button" id="chatButton" onclick="toggleChat()">
+    <span class="chat-button-icon">💬</span>
+  </button>
+
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <div class="chat-header-icon">🤖</div>
+      <div class="chat-header-text">
+        <h3>VIT Bot</h3>
+        <p>How may I help you?</p>
+      </div>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot">
+        <div class="message-avatar">🤖</div>
+        <div>
+          <div class="message-content">
+            Hi! I'm VIT Bot, your personal academic assistant. I can help you with:
+            <br><br>
+            📚 Academic advice & study tips<br>
+            🔥 Burnout prevention & mental health<br>
+            📅 Task & deadline management<br>
+            🏫 VIT campus information<br>
+            <br>
+            What would you like to know?
+          </div>
+          <div class="message-time" id="welcomeTime"></div>
+        </div>
+      </div>
+
+      <div class="message bot">
+        <div class="message-avatar">🤖</div>
+        <div class="typing-indicator" id="typingIndicator">
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quick-actions" id="quickActions">
+      <button class="quick-action-btn" onclick="sendQuickMessage('How can I reduce burnout?')">🔥 Reduce burnout</button>
+      <button class="quick-action-btn" onclick="sendQuickMessage('Study tips for exams')">📖 Study tips</button>
+      <button class="quick-action-btn" onclick="sendQuickMessage('Time management advice')">⏰ Time management</button>
+      <button class="quick-action-btn" onclick="sendQuickMessage('VIT library hours')">📚 Library info</button>
+    </div>
+
+    <div class="chat-input">
+      <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
+      <button id="sendButton" onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+
+  <script>
+    const GROQ_API_KEY = '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';
+    const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
+    const MODEL = 'llama-3.3-70b-versatile';
+
+    let chatHistory = [];
+    let isTyping = false;
+
+    function toggleChat() {
+      const chatWindow = document.getElementById('chatWindow');
+      const chatButton = document.getElementById('chatButton');
+
+      chatWindow.classList.toggle('active');
+      chatButton.classList.toggle('active');
+
+      if (chatWindow.classList.contains('active')) {
+        document.getElementById('chatInput').focus();
+      }
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const message = input.value.trim();
+
+      if (!message || isTyping) return;
+
+      addMessage('user', message);
+      input.value = '';
+
+      showTyping(true);
+
+      try {
+        const context = getStudentContext();
+
+        const messages = [
+          {
+            role: 'system',
+            content: `You are VIT Bot, a helpful AI assistant for VIT (Vellore Institute of Technology) students. 
+
+Your capabilities:
+- Provide academic advice and study strategies
+- Help with burnout prevention and mental wellness
+- Offer task and deadline management tips
+- Answer questions about VIT campus, facilities, and resources
+
+Student Context:
+${context}
+
+Guidelines:
+- Be friendly, supportive, and empathetic
+- Keep responses concise (2-4 short paragraphs max)
+- Use emojis occasionally to be engaging
+- If asked about specific VIT info you don't know, acknowledge limitations
+- Prioritize student wellbeing and mental health
+- Give actionable, practical advice`
+          },
+          ...chatHistory,
+          { role: 'user', content: message }
+        ];
+
+        const response = await fetch(GROQ_API_URL, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${GROQ_API_KEY}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            model: MODEL,
+            messages: messages,
+            temperature: 0.7,
+            max_tokens: 500,
+            top_p: 0.9
+          })
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.error('API Error Response:', errorData);
+          throw new Error(`API Error: ${response.status} - ${errorData.error?.message || 'Unknown error'}`);
+        }
+
+        const data = await response.json();
+        const botReply = data.choices[0].message.content;
+
+        chatHistory.push(
+          { role: 'user', content: message },
+          { role: 'assistant', content: botReply }
+        );
+
+        if (chatHistory.length > 20) {
+          chatHistory = chatHistory.slice(-20);
+        }
+
+        showTyping(false);
+        addMessage('bot', botReply);
+
+      } catch (error) {
+        console.error('Chat error:', error);
+        showTyping(false);
+
+        let errorMsg = 'Oops! Something went wrong. Please try again.';
+
+        if (error.message.includes('401')) {
+          errorMsg = '🔐 Authentication error. Please check your API key.';
+        } else if (error.message.includes('429')) {
+          errorMsg = '⏳ Rate limit reached. Please wait a moment and try again.';
+        } else if (error.message.includes('API Error')) {
+          errorMsg = `❌ ${error.message}`;
+        }
+
+        addMessage('bot', errorMsg, true);
+      }
+    }
+
+    function getStudentContext() {
+      let context = 'General student at VIT';
+
+      try {
+        if (window.parent && window.parent.getUser) {
+          const user = window.parent.getUser();
+          context = `Student Name: ${user.name}\nDepartment: ${user.department || 'N/A'}\nYear: ${user.year || 'N/A'}`;
+        }
+      } catch (e) {
+        console.log('No student context available');
+      }
+
+      return context;
+    }
+
+    function addMessage(sender, text, isError = false) {
+      const messagesDiv = document.getElementById('chatMessages');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${sender}`;
+
+      const time = new Date().toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit'
+      });
+
+      const avatar = sender === 'bot' ? '🤖' : '👤';
+
+      messageDiv.innerHTML = `
+        <div class="message-avatar">${avatar}</div>
+        <div>
+          <div class="message-content ${isError ? 'error' : ''}" style="${isError ? 'background: #fee; color: #e74c3c;' : ''}">
+            ${text.replace(/\n/g, '<br>')}
+          </div>
+          <div class="message-time">${time}</div>
+        </div>
+      `;
+
+      const typingMsg = messagesDiv.querySelector('.message.bot:last-child');
+      messagesDiv.insertBefore(messageDiv, typingMsg);
+
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    function showTyping(show) {
+      isTyping = show;
+      const indicator = document.getElementById('typingIndicator');
+      const sendButton = document.getElementById('sendButton');
+
+      indicator.classList.toggle('active', show);
+      sendButton.disabled = show;
+
+      if (show) {
+        const messagesDiv = document.getElementById('chatMessages');
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
+    }
+
+    function sendQuickMessage(message) {
+      document.getElementById('chatInput').value = message;
+      sendMessage();
+    }
+
+    function handleKeyPress(event) {
+      if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        sendMessage();
+      }
+    }
+
+    window.addEventListener('load', () => {
+      const welcomeTime = document.getElementById('welcomeTime');
+      const now = new Date().toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit'
+      });
+      welcomeTime.textContent = now;
+
+      console.log('✅ VIT Bot initialized and ready!');
+      console.log('📡 Using model:', MODEL);
+    });
+  </script>
+</body>
+
+</html>
