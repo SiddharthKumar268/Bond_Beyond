@@ -240,7 +240,7 @@ const pdfParse = require('pdf-parse');
 const Tesseract = require('tesseract.js');
 const fs = require('fs').promises;
 const path = require('path');
-const { convert } = require('pdf-poppler');
+// const { convert } = require('pdf-poppler');
 
 const storage = multer.memoryStorage();
 const upload = multer({
@@ -576,5 +576,6 @@ router.post('/calendar/manual-bulk', checkPermission('manageCalendar'), async (r
     res.status(500).json({ error: error.message });
   }
 });//Manual version of bulk upload for testing without OCR
+
 
 module.exports = router;
