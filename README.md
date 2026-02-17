@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧠 Academic Burnout Prediction System
+# Academic Burnout Prediction System
 
 ### AI-Powered Student Wellness & Workload Intelligence Platform
 
@@ -17,7 +17,7 @@
 
 ---
 
-## 🎯 Problem & Impact
+## Problem & Impact
 
 <table>
 <tr>
@@ -26,11 +26,11 @@
 Students experience burnout<br/>during academic semesters
 </td>
 <td align="center" width="33%">
-<h3>⏰ 3-4 weeks</h3>
+<h3>3-4 weeks</h3>
 Average detection time<br/>after burnout onset
 </td>
 <td align="center" width="33%">
-<h3>🚨 12%</h3>
+<h3>12%</h3>
 Seek help before<br/>reaching critical stress
 </td>
 </tr>
@@ -1455,3 +1455,4 @@ MIT License - see [LICENSE](LICENSE) for details.
 **[⬆ Back to Top](#-academic-burnout-prediction-system)**
 
 </div>
+
