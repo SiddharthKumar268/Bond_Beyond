@@ -1,8 +1,13 @@
 <div align="center">
 
-# Academic Burnout Prediction System
+<!-- TYPEWRITER ANIMATED TITLE -->
+<a href="#">
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=800&size=36&pause=1000&color=6366F1&center=true&vCenter=true&repeat=true&width=700&height=80&lines=Academic+Burnout+Prediction;AI-Powered+Wellness+Platform;Student+Workload+Intelligence;Early+Burnout+Detection+System" alt="Typing SVG" />
+</a>
 
-### AI-Powered Student Wellness & Workload Intelligence Platform
+### <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=16&pause=2000&color=10B981&center=true&vCenter=true&repeat=true&width=500&height=30&lines=AI-Powered+Student+Wellness+%26+Workload+Intelligence+Platform;2-3+Week+Early+Burnout+Prediction+Engine;Multi-Signal+Risk+Detection+%7C+Real-Time+Alerts" alt="Subtitle" />
+
+<br/>
 
 [![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js 18+](https://img.shields.io/badge/Node.js-18+-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
@@ -69,6 +74,10 @@ graph LR
 ---
 
 ## 🏗️ Complete System Architecture
+
+<div align="center">
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&pause=1500&color=8B5CF6&center=true&vCenter=true&repeat=true&width=600&height=35&lines=High-Level+System+Design;Presentation+%7C+Security+%7C+API+%7C+Logic;Detection+%7C+Data+%7C+Database+%7C+Jobs" alt="Architecture Typing" />
+</div>
 
 ### High-Level System Design
 
@@ -174,6 +183,10 @@ graph TB
 
 ## 🔄 Complete Data Flow Architecture
 
+<div align="center">
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&pause=1500&color=EC4899&center=true&vCenter=true&repeat=true&width=600&height=35&lines=Request-Response+Flow;Student+%E2%86%92+API+%E2%86%92+Auth+%E2%86%92+Engine;Detectors+%E2%86%92+Signal+%E2%86%92+Alert+%E2%86%92+Proctor" alt="Data Flow Typing" />
+</div>
+
 ### Request-Response Flow
 
 ```mermaid
@@ -253,7 +266,7 @@ sequenceDiagram
     DB-->>NOTIF: Student: John Doe<br/>Proctor: Dr. Smith
     
     par Notification Dispatch
-        NOTIF->>S: 📧 Email: "High Burnout Risk Alert"
+        NOTIF->>S: 📧 Email: "High Burnout Alert"
         NOTIF->>P: 📧 Email: "Student Alert: John Doe"
         NOTIF->>DB: Log intervention required
     end
@@ -276,6 +289,10 @@ sequenceDiagram
 ---
 
 ## 🧬 Burnout Prediction Algorithm
+
+<div align="center">
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&pause=1500&color=F59E0B&center=true&vCenter=true&repeat=true&width=600&height=35&lines=Multi-Signal+Detection+System;4+Parallel+Detectors+%7C+0-100+Risk+Score;LOW+%F0%9F%9F%A2+%7C+MEDIUM+%F0%9F%9F%A1+%7C+HIGH+%F0%9F%94%B4+Classification" alt="Algorithm Typing" />
+</div>
 
 ### Multi-Signal Detection System
 
@@ -357,6 +374,10 @@ flowchart TD
 
 ## 📊 Workload Calculation Engine
 
+<div align="center">
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&pause=1500&color=10B981&center=true&vCenter=true&repeat=true&width=600&height=35&lines=Task+%26+Event+Scoring+System;Exam+3.0x+%7C+Project+2.5x+%7C+Assignment+1.5x;Daily+Score+%3D+Task+Score+%2B+Event+Score" alt="Workload Typing" />
+</div>
+
 ### Task & Event Scoring System
 
 ```mermaid
@@ -409,6 +430,10 @@ graph TB
 ---
 
 ## 🗄️ Database Architecture
+
+<div align="center">
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&pause=1500&color=47A248&center=true&vCenter=true&repeat=true&width=600&height=35&lines=Complete+Entity+Relationship+Diagram;7+Collections+%7C+MongoDB+6.0%2B;users+%7C+tasks+%7C+events+%7C+grades+%7C+signals" alt="DB Typing" />
+</div>
 
 ### Complete Entity Relationship Diagram
 
@@ -557,7 +582,11 @@ flowchart LR
 
 ## 🔍 Signal Detector Deep Dive
 
-### 1. Collision Detector - Deadline Overload Analysis
+<div align="center">
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&pause=1200&color=EF4444&center=true&vCenter=true&repeat=true&width=700&height=35&lines=%F0%9F%8E%AF+Collision+%7C+%E2%9A%A1+Volatility+%7C+%F0%9F%9B%8C+Recovery+%7C+%F0%9F%93%89+Drift;Max+Total+Score%3A+100+points;Detection+Window%3A+6+months+lookback" alt="Detectors Typing" />
+</div>
+
+### 1. 🎯 Collision Detector - Deadline Overload Analysis
 
 ```mermaid
 flowchart TD
@@ -598,7 +627,7 @@ flowchart TD
     style RETURN fill:#6366f1,stroke:#4f46e5,color:#fff
 ```
 
-### 2. Volatility Detector - Workload Spike Analysis
+### 2. ⚡ Volatility Detector - Workload Spike Analysis
 
 ```mermaid
 flowchart TD
@@ -637,7 +666,7 @@ flowchart TD
     style RETURN fill:#6366f1,stroke:#4f46e5,color:#fff
 ```
 
-### 3. Recovery Detector - Rest Period Analysis
+### 3. 🛌 Recovery Detector - Rest Period Analysis
 
 ```mermaid
 flowchart TD
@@ -670,7 +699,7 @@ flowchart TD
     style RETURN fill:#6366f1,stroke:#4f46e5,color:#fff
 ```
 
-### 4. Drift Detector - Performance Correlation Analysis
+### 4. 📉 Drift Detector - Performance Correlation Analysis
 
 ```mermaid
 flowchart TD
@@ -712,6 +741,10 @@ flowchart TD
 ---
 
 ## 📡 Complete API Architecture
+
+<div align="center">
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&pause=1500&color=6366F1&center=true&vCenter=true&repeat=true&width=700&height=35&lines=REST+API+%7C+JWT+Auth+%7C+Role-Based+Access;%2Fapi%2Fauth+%7C+%2Fapi%2Fburnout+%7C+%2Fapi%2Ftasks;%2Fapi%2Fproctor+%7C+%2Fapi%2Fadmin+%7C+%2Fapi%2Fgrades" alt="API Typing" />
+</div>
 
 ### API Route Hierarchy
 
@@ -847,6 +880,10 @@ sequenceDiagram
 
 ## 🚀 Quick Start
 
+<div align="center">
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&pause=1500&color=10B981&center=true&vCenter=true&repeat=true&width=600&height=35&lines=Up+and+running+in+5+minutes+%F0%9F%9A%80;Clone+%E2%86%92+Install+%E2%86%92+Configure+%E2%86%92+Launch;npm+start+%E2%86%92+localhost%3A3000+%E2%9C%85" alt="Quickstart Typing" />
+</div>
+
 ### Installation (5 Minutes)
 
 ```bash
@@ -910,6 +947,10 @@ VOLATILITY_EXTREME=200
 ---
 
 ## 📊 Real-World Example
+
+<div align="center">
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&pause=1500&color=EC4899&center=true&vCenter=true&repeat=true&width=600&height=35&lines=John+Doe+%E2%80%94+4+Week+Burnout+Journey;Week+1+%F0%9F%9F%A2+Normal+%E2%86%92+Week+4+%F0%9F%94%B4+Critical;Risk+Score%3A+0+%E2%86%92+75+%F0%9F%9A%A8+Intervention+Sent" alt="Example Typing" />
+</div>
 
 ### Complete Student Journey
 
@@ -1123,6 +1164,10 @@ gantt
 
 ## 🔧 Configuration Deep Dive
 
+<div align="center">
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&pause=1500&color=F59E0B&center=true&vCenter=true&repeat=true&width=700&height=35&lines=System+Constants+%26+Thresholds;Task+Weights+%7C+Event+Weights+%7C+Risk+Bands;All+configurable+via+.env+file" alt="Config Typing" />
+</div>
+
 ### System Constants & Thresholds
 
 ```mermaid
@@ -1188,6 +1233,10 @@ graph TB
 
 ## 🧪 Testing & Quality
 
+<div align="center">
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&pause=1500&color=10B981&center=true&vCenter=true&repeat=true&width=700&height=35&lines=170+Unit+%7C+45+Integration+%7C+28+E2E+Tests;92%25+Overall+Coverage+%E2%9C%85;Burnout+Predictor+94%25+%7C+Workload+96%25" alt="Testing Typing" />
+</div>
+
 ### Test Coverage Architecture
 
 ```mermaid
@@ -1227,6 +1276,10 @@ flowchart LR
 ---
 
 ## 🚀 Deployment Architecture
+
+<div align="center">
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&pause=1500&color=8B5CF6&center=true&vCenter=true&repeat=true&width=700&height=35&lines=Production+Infrastructure;CDN+%E2%86%92+Load+Balancer+%E2%86%92+Node.js+Cluster;MongoDB+Replica+Set+%7C+Redis+Cache+%7C+Monitoring" alt="Deploy Typing" />
+</div>
 
 ### Production Infrastructure
 
@@ -1377,6 +1430,10 @@ flowchart LR
 
 ## 🗺️ Roadmap
 
+<div align="center">
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=18&pause=1500&color=6366F1&center=true&vCenter=true&repeat=true&width=700&height=35&lines=Product+Roadmap+2026+%F0%9F%97%BA%EF%B8%8F;Q2+ML+Model+%7C+Q3+Mobile+App+%7C+Q4+Multi-Uni;Canvas+LMS+%7C+Slack+%7C+Gamification+%7C+Research" alt="Roadmap Typing" />
+</div>
+
 ```mermaid
 gantt
     title Product Roadmap 2026
@@ -1434,6 +1491,8 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 <div align="center">
 
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=22&pause=1000&color=6366F1&center=true&vCenter=true&repeat=true&width=600&height=50&lines=Made+with+%E2%9D%A4%EF%B8%8F+for+student+wellness;Preventing+burnout%2C+one+prediction+at+a+time+%F0%9F%9A%80;Star+%E2%AD%90+the+repo+if+this+helped+you!" alt="Footer Typing" />
+
 ### 📊 Project Stats
 
 ![GitHub stars](https://img.shields.io/github/stars/yourusername/burnout-prediction-system?style=social)
@@ -1444,15 +1503,10 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-### Made with ❤️ for student wellness
-
-**Preventing burnout, one prediction at a time.**
-
 [![Deploy Now](https://img.shields.io/badge/Deploy-Now-success?style=for-the-badge)](docs/DEPLOYMENT.md)
 [![View Demo](https://img.shields.io/badge/View-Demo-blue?style=for-the-badge)](#-demo)
 [![Read Docs](https://img.shields.io/badge/Read-Docs-orange?style=for-the-badge)](docs/)
 
-**[⬆ Back to Top](#-academic-burnout-prediction-system)**
+**[⬆ Back to Top](#academic-burnout-prediction-system)**
 
 </div>
-
