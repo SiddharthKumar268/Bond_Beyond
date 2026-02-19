@@ -1,4 +1,6 @@
-const API_URL = 'http://localhost:5000/api';
+const API_URL = window.location.hostname === 'localhost'
+  ? 'http://localhost:5000/api'
+  : '/api';
 
 // Get auth token
 function getToken() {
@@ -577,4 +579,5 @@ const modalStyles = `
 // Inject styles into page
 if (typeof document !== 'undefined') {
   document.head.insertAdjacentHTML('beforeend', modalStyles);
+
 }
